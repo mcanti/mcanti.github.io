@@ -1,0 +1,241 @@
+﻿<krpano version="1.19" title="" onstart="startup();">
+<include url="vtourskin.xml" />
+<include url="include.xml" />
+<action name="startup">
+	  CheckTabletPhone();
+    VerifyLanguage();
+    if(get(skin_settings.thumb_language),ActivateLanguage(););
+    events.dispatch(UpdateLanguageElements);
+    if(startscene === null, copy(startscene,scene[10].name));
+    loadscene(get(startscene), null, MERGE,BLEND(1.5));
+
+    if(get(skin_settings.select_map),loop_all_select_plugins();plugin_select_activ(smh10));
+    if(get(skin_settings.thumbsopened),test_thumbs_open());
+</action>
+
+
+	<scene name="scene_pano0" title="" onstart="stop_day_night()" thumburl="pano/pano0/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano0),MiddleLargeText));" />
+
+		<view hlookat="-78.659" vlookat="8.525" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano0/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano0/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-177.168" atv="19.588" linkedscene="scene_pano2" />
+	</scene>
+
+	<scene name="scene_pano1" title="" onstart="stop_day_night()" thumburl="pano/pano1/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano1),MiddleLargeText));" />
+
+		<view hlookat="-69.130" vlookat="11.188" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano1/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano1/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="0.401" atv="15.088" linkedscene="scene_pano10" />
+
+	</scene>
+
+	<scene name="scene_pano2" title="" onstart="stop_day_night()" thumburl="pano/pano2/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano2),MiddleLargeText));" />
+
+		<view hlookat="-271.662" vlookat="13.076" fovtype="VFOV" fov="82.936" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano2/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano2/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="112.838" atv="10.221" linkedscene="scene_pano1" />
+
+	</scene>
+
+	<scene name="scene_pano3" title="" onstart="stop_day_night()" thumburl="pano/pano3/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano3),MiddleLargeText));" />
+
+		<view hlookat="-60.657" vlookat="7.305" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano3/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano3/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-46.314" atv="13.501" linkedscene="scene_pano4" />
+
+	</scene>
+
+	<scene name="scene_pano4" title="" onstart="stop_day_night()" thumburl="pano/pano4/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano4),MiddleLargeText));" />
+
+		<view hlookat="92.241" vlookat="12.387" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano4/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano4/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-174.259" atv="24.880" linkedscene="scene_pano5" />
+
+	</scene>
+
+	<scene name="scene_pano5" title="" onstart="stop_day_night()" thumburl="pano/pano5/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano5),MiddleLargeText));" />
+
+		<view hlookat="-10.803" vlookat="8.426" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano5/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano5/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-70.603" atv="10.079" linkedscene="scene_pano8" />
+	</scene>
+
+	<scene name="scene_pano6" title="" onstart="stop_day_night()" thumburl="pano/pano6/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano6),MiddleLargeText));" />
+
+		<view hlookat="-5.256" vlookat="10.223" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano6/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano6/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-146.567" atv="14.631" linkedscene="scene_pano7" />
+	</scene>
+
+	<scene name="scene_pano7" title="" onstart="stop_day_night()" thumburl="pano/pano7/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano7),MiddleLargeText));" />
+
+		<view hlookat="-30.025" vlookat="17.691" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano7/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano7/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="44.557" atv="22.196" linkedscene="scene_pano0" />
+	</scene>
+
+	<scene name="scene_pano8" title="" onstart="stop_day_night()" thumburl="pano/pano8/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano8),MiddleLargeText));" />
+
+		<view hlookat="40.084" vlookat="17.870" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano8/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano8/pano_%s.jpg" />
+		</image>
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="131.381" atv="15.417" linkedscene="scene_pano9" />
+	</scene>
+
+	<scene name="scene_pano9" title="" onstart="stop_day_night()" thumburl="pano/pano9/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano9),MiddleLargeText));" />
+
+		<view hlookat="-57.966" vlookat="0.409" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano9/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano9/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="6.993" atv="16.580" linkedscene="scene_pano6" />
+	</scene>
+
+	<scene name="scene_pano10" title="" onstart="stop_day_night()" thumburl="pano/pano10/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano10),MiddleLargeText));" />
+
+		<view hlookat="3.819" vlookat="-8.853" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano10/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano10/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="7.066" atv="11.778" linkedscene="scene_pano11" />
+	</scene>
+	<scene name="scene_pano11" title="" onstart="stop_day_night()" thumburl="pano/pano11/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano11),MiddleLargeText));" />
+
+		<view hlookat="-51.966" vlookat="1.978" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano11/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano11/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-61.262" atv="15.873" linkedscene="scene_pano13" />
+	</scene>
+
+	<scene name="scene_pano12" title="" onstart="stop_day_night()" thumburl="pano/pano12/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano12),MiddleLargeText));" />
+
+		<view hlookat="33.223" vlookat="11.313" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano12/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano12/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="85.241" atv="11.499" linkedscene="scene_pano14" />
+	</scene>
+	<scene name="scene_pano13" title="" onstart="stop_day_night()" thumburl="pano/pano13/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano13),MiddleLargeText));" />
+
+		<view hlookat="-16.427" vlookat="2.455" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano13/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano13/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-81.039" atv="10.569" linkedscene="scene_pano12" />
+	</scene>
+	<scene name="scene_pano14" title="" onstart="stop_day_night()" thumburl="pano/pano14/thumb.jpg" lat="" lng="" heading="">
+		<events name="scene" onloadcomplete="if(skin_settings.onxmlload_showtext,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].scene_pano14),MiddleLargeText));" />
+
+		<view hlookat="-19.166" vlookat="10.688" fovtype="VFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="pano/pano14/preview.jpg" />
+
+		<image>
+			<cube url="pano/pano14/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="107.043" atv="27.506" linkedscene="scene_pano3" />
+	</scene>
+</krpano>

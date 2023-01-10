@@ -1,0 +1,842 @@
+<krpano><!-- krpano 1.0.8.15 - Default Virtual Tour Skin -->
+
+    <!-- Global Skin settings (can be overridden in the 'outer' xml) -->
+    <skin_settings bingmaps="false"
+                   bingmaps_key=""
+                   bingmaps_zoombuttons="false"
+
+                   gyro="false"
+
+                   thumb_language_top_padding="70"
+                   thumb_language_right_padding="5"
+                   thumb_language="false"
+
+                   LogoConcept="false"
+
+                   ImageClient="false"
+
+                   LogoClient="true"
+                   ClientURL="https://careers.nttdata.ro/"
+
+                   thumbswidth="160"
+                   thumbsheight="80"
+                   thumbspadding="10"
+                   thumbscrop="0|0|240|120"
+                   thumbsopened="false"
+                   tooltips_thumbs="false"
+
+                   tooltips_hotspots="false"
+
+                   tooltips_mapspots="false"
+
+                   controlbar_offset="20"
+
+                   loading_text="false"
+                   loading_percentage="false"
+
+                   map_toolbar_button="null"
+                   map_position="null"
+
+                   title_name_and_scenename="false"
+                   title_name="false"
+                   title_scenename="false"
+                   onxmlload_showtext="false"
+
+                   sound_plugin="false"
+            />
+
+	<layer name="loadingpercent_text" keep="true" url="%SWFPATH%/plugins/textfield.swf" align="center" edge="center" width="250" x="0" y="-20" background="false" border="false" autoheight="true" css="text-align:center; color:#FFFFFF; font-family:Lato; font-size:14px; font-weight:400;" textshadow="2" html="" />
+
+	<layer name="skin_scroll_window" type="container" keep="true" align="leftbottom" width="100%" height="100%" x="0" y="0" oy="9" y_opened="0" y_closed="15" maskchildren="true">
+		<layer name="skin_scroll_layer" type="container" align="leftbottom" width="100%" height="100%" x="0" y="-100%">
+            <layer name="dayNightTextPopup" url="%FIRSTXML%/plugins/textfield.swf" align="top" edge="bottom" width="200"
+                    height="302" autoheight="true" x="0" y="=0" oy="-40" y_opened="0" y_closed="-10" zorder="1004" enabled="true"
+                    background="false" border="false" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].SliderInfo))" html=""
+                    css="text-align:center; color:#FFFFFF; font-family:Lato; font-weight:400; font-size:12px;" textshadow="1"
+                    visible="false"/>
+            <plugin name="slider_bg"  url="%FIRSTXML%/assets/daynight/background_slider.png" zorder="1001" align="top" edge="bottom" width="150" height="25" x="-10" y="-15" handcursor="false" alpha="1.0" onhover="" enabled="false" visible="false" >
+			<plugin name="slider_grip" url="%FIRSTXML%/assets/daynight/buton_slider.png" zorder="1002" align="left" parent="slider_bg" width="25" height="25" onloaded="wait(1);set(visible,true);" visible="false" x="0" y="0" ondown="startdragingslider(1);" onup="stopdragingslider();" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].SliderLeft), MouseHoverStyle);" />
+			</plugin>
+			<layer name="skin_title"     url="%FIRSTXML%/plugins/textfield.swf" align="lefttop" edge="leftbottom" width="75%" height="32" autoheight="true" x="5" y="0" y_opened="0" y_closed="-10" zorder="1004" enabled="false" background="false" border="false" css="text-align:left; color:#FFFFFF; font-family:Lato; font-weight:400; font-size:15px;" textshadow="1" visible="false" />
+			<layer name="LogoConcept"     url="%FIRSTXML%/assets/logos/find_more.png" align="righttop" edge="rightbottom"  x="5" y="-10" y_opened="-2" y_closed="-10" zorder="1004" enabled="false" visible="false" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].CompanyLogoHover), MouseHoverStyle);"
+			onclick="openurl(https://careers.nttdata.ro/,_blank);" scale="2" alpha="1" />
+			<layer name="skin_scroll_container" type="container" bgcolor="0x000000" bgalpha="0.15" align="lefttop" width="100%" height="100%" x="0" y="0" maskchildren="true" >
+				<layer name="skin_thumbs" state="closed" url="plugins/scrollarea.swf" alturl="plugins/scrollarea.js" direction="h" visible="false" align="top" width="100%" height="100" onloaded="skin_updatescroll();" />
+			</layer>
+		</layer>
+	</layer>
+
+    <layer name="skin_control_bar" keep="true" type="container" bgcolor="0x000000" bgalpha="0.15" align="leftbottom" width="100%" height="26" x="0" y="0" oy="10" y_opened="10" y_closed="-30" zorder="1003" >
+        <layer name="skin_btmborder"  url="%FIRSTXML%/assets/skin/vtourskin.png" crop="2|52|60|12"   align="bottomleft" edge="topleft" width="100%" height="12" x="0" y="-10" enabled="false" />
+        <layer name="skin_btn_prev"   url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|64|64|64"   align="leftbottom"        x="5"    y="0"   scale="0.4" alpha="0.5" onclick="skin_nextscene(-1);" ondown="skin_buttonglow(get(name));" onup="skin_buttonglow(null);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].MovePrevious), MouseHoverStyle);" />
+        <layer name="skin_btn_next"   url="%FIRSTXML%/assets/skin/vtourskin.png" crop="64|64|64|64"  align="rightbottom"       x="5"    y="0"   scale="0.4" alpha="0.5" onclick="skin_nextscene(+1);" ondown="skin_buttonglow(get(name));" onup="skin_buttonglow(null);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].MoveNext), MouseHoverStyle);" />
+        <layer name="skin_btn_thumbs" url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|128|64|64"  align="leftbottom"  x="35"   y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); skin_showmap(false); skin_showthumbs();" onup="skin_buttonglow(null);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].ToggleThumbnails), MouseHoverStyle);" />
+        <layer name="skin_btn_map"    url="%FIRSTXML%/assets/skin/vtourskin.png" crop="64|128|64|64" align="leftbottom"  x="65"   y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); skin_showthumbs(false); skin_showmap(null,'force');" onup="skin_buttonglow(null);" visible="false" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].ToggleMap), MouseHoverStyle);" />
+        <layer name="skin_btn_info"   url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|640|64|64"  align="bottom"      x="-105"  y="0"   scale="0.4" visible="true" ondown="skin_buttonglow(get(name));" onup="skin_buttonglow(null);StartHelpPlugin();" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].ToggleHelp), MouseHoverStyle);" />
+        <layer name="skin_btn_lt"     url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|192|64|64"  align="bottom"      x="-75" y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); set(hlookat_moveforce,-1);" onup="skin_buttonglow(null);set(hlookat_moveforce,0);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].TurnLeft), MouseHoverStyle);"/>
+        <layer name="skin_btn_rt"     url="%FIRSTXML%/assets/skin/vtourskin.png" crop="64|192|64|64" align="bottom"      x="-45"  y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); set(hlookat_moveforce,+1);" onup="skin_buttonglow(null);set(hlookat_moveforce,0);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].TurnRight), MouseHoverStyle);" />
+        <layer name="skin_btn_up"     url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|256|64|64"  align="bottom"      x="-15"  y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); set(vlookat_moveforce,-1);" onup="skin_buttonglow(null);set(vlookat_moveforce,0);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].TurnUp), MouseHoverStyle);" />
+        <layer name="skin_btn_dn"     url="%FIRSTXML%/assets/skin/vtourskin.png" crop="64|256|64|64" align="bottom"      x="15"  y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); set(vlookat_moveforce,+1);" onup="skin_buttonglow(null);set(vlookat_moveforce,0);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].TurnDown), MouseHoverStyle);" />
+        <layer name="skin_btn_in"     url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|320|64|64"  align="bottom"      x="45"  y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); set(fov_moveforce,-1);" onup="skin_buttonglow(null);set(fov_moveforce,0);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].ZoomIn), MouseHoverStyle);" />
+        <layer name="skin_btn_ou"     url="%FIRSTXML%/assets/skin/vtourskin.png" crop="64|320|64|64" align="bottom"      x="75" y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); set(fov_moveforce,+1);" onup="skin_buttonglow(null);set(fov_moveforce,0);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].ZoomOut), MouseHoverStyle);" />
+        <layer name="skin_btn_fs"     url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|576|64|64"  align="bottom"      x="105"  y="0"   scale="0.4" ondown="skin_buttonglow(get(name));" onup="skin_buttonglow(null);" onclick="switch(fullscreen);" devices="fullscreensupport" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].ToggleFullscreen), MouseHoverStyle);" />
+        <layer name="skin_btn_sound"  url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|703|64|64"  align="bottom"      x="135"  y="0"   scale="0.4" ondown="skin_buttonglow(get(name));" onup="skin_buttonglow(null);" onclick="manageSounds();" visible="false" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].ToggleSound), MouseHoverStyle);" />
+        <layer name="skin_btn_hide"   url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|448|64|64"  align="rightbottom"       x="35"   y="0"   scale="0.4" ondown="skin_buttonglow(get(name));" onup="skin_buttonglow(null);" onclick="skin_hideskin()" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].HideAll), MouseHoverStyle);" />
+        <layer name="skin_btn_show"   url="%FIRSTXML%/assets/skin/vtourskin.png" crop="64|448|64|64" align="right"       x="5"    y="-37" scale="0.4" alpha="0" visible="false" onclick="skin_showskin()" ondown="skin_buttonglow(get(name));" onup="skin_buttonglow(null);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].ShowAll), MouseHoverStyle);" />
+        <layer name="skin_btn_gyro"   url="%FIRSTXML%/assets/skin/vtourskin.png" crop="0|384|64|64"  align="leftbottom"      x="90"  y="0"   scale="0.4" ondown="skin_buttonglow(get(name)); skin_showmap(false);" onclick="switch(plugin[skin_gyro].enabled);" onup="skin_buttonglow(null);" visible="false" devices="HTML5" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].Gyroscope), MouseHoverStyle);" />
+    </layer>
+
+	<layer name="skin_loadingtext"  keep="true" url="%FIRSTXML%/plugins/textfield.swf" align="center" x="5" y="-5" html="Loading...Please wait..." visible="false" autoheight="true" background="false" border="false" enabled="false" css="text-align:center; color:#FFFFFF; font-family:Lato; font-weight:400; font-size:22px; font-style:italic;" textshadow="2" />
+	<layer name="skin_buttonglow"   keep="true" url="%FIRSTXML%/assets/skin/vtourskin.png" crop="64|384|64|64" align="center" x="0" y="1" alpha="0.0" visible="false" enabled="false" />
+	<layer name="skin_thumbborder"  keep="true" url="%FIRSTXML%/assets/skin/vtourskin_thumbborder.png" width="165" height="85" visible="false" enabled="false" align="lefttop" ox="-2" oy="-2" />
+
+	<layer name="ImageClient"         keep="true" align="righttop" x="10" y="60" capture="false" accuracy="1" visible="false" enabled="false" state="small" url="%FIRSTXML%/assets/logos/splash_client.png" scale="0.4" opened_onclick="openurl('...',_blank);" onclick="if(state == 'small', skin_openlogo(); , skin_closelogo('now'); );" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].ClientLogoHover),MouseHoverStyle);"/>
+
+	<layer name="LogoClient"         keep="true" align="righttop" x="15" y="15" capture="false" accuracy="1" visible="false" enabled="false" state="small" url="%FIRSTXML%/assets/logos/logo_client.png" scale="0.7" onclick="openurl(get(skin_settings.ClientURL),_blank);" onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].ClientLogoHover),MouseHoverStyle);"/>
+
+    <plugin name="skin_gyro"        keep="true" url="" html5_url="%SWFPATH%/plugins/gyro.js" devices="html5+!firefox+!android" enabled="false" camroll="true" friction="0" velastic="0" onavailable="if(device.fullscreensupport, if(device.mobile,add(layer[skin_btn_gyro].x,40),add(layer[skin_btn_gyro].x,20));); if(view.vlookatrange == 180, set(layer[skin_btn_gyro].visible,true));" />
+
+
+	<!-- Skin Events -->
+	<events name="skin_events" keep="true"
+	        onxmlcomplete="skin_startup(); set(events[skin_events].onxmlcomplete,null);"
+	        onnewpano="
+	            UpdateSceneTitle();
+				skin_update_scene_infos();
+				if(skin_settings.loading_percentage,loadingpercent_startloading(););
+				if(skin_settings.loading_text,set(layer[skin_loadingtext].visible, true));
+				"
+	        onremovepano="
+				if(skin_settings.loading_text,set(layer[skin_loadingtext].visible, true));
+				"
+	        onloadcomplete="
+				if(skin_settings.loading_percentage,delayedcall(0.25, loadingpercent_stoploading();););
+				if(skin_settings.loading_text,set(layer[skin_loadingtext].visible, false));
+				"
+	        onresize="skin_onresize();"
+	        />
+
+	<events name="skin_events" devices="fullscreensupport"
+	        onenterfullscreen="set(layer[skin_btn_fs].crop, '64|576|64|64');"
+	        onexitfullscreen="set(layer[skin_btn_fs].crop, '0|576|64|64');"
+	        />
+
+
+	<!-- Skin Hotspot Style (the hotspots need a 'linkedscene' attribute to be clickable) -->
+	<style name="skin_hotspotstyle" url="%FIRSTXML%/assets/skin/arrow1.png" scale="0.6" edge="center" oy="0"
+		     onloaded="if(no_hover,,hotspot_hover(get(linkedscene),get(name)));" zorder="0" linkedscene=""
+	       onclick="if(linkedscene,
+          set(temp_linkedscene,get(linkedscene));
+          loadscene(get(linkedscene),get(lang_var),MERGE,BLEND(1.5));
+					if(get(skin_settings.select_map),
+						loop_all_select_plugins();
+						subtxt(select_map,get(temp_linkedscene),10,3);
+						txtadd(select_map,'smh',get(select_map));
+						plugin_select_activ(get(select_map));
+						);
+					if(get(skin_settings.floor_map),
+						loop_all_plugins();
+						subtxt(map_number,get(temp_linkedscene),10,3);
+						txtadd(map_number,'h',get(map_number));
+						plugin_activ(get(map_number));
+						move_radar_position(
+							get(plugin[get(map_number)].x),
+							get(plugin[get(map_number)].y),
+							get(plugin[get(map_number)].heading),
+							get(plugin[get(map_number)].radar_visible),
+                            get(plugin[get(map_number)].parent)
+						);
+					);
+					skin_updatescroll();
+					);"
+		     zoom="true"
+	       onhover=""
+	       />
+	<style name="skin_hotspotstyle_up" rotate="0" url="%FIRSTXML%/assets/skin/arrow2.png" scale="0.8" edge="center" oy="0"
+		   onloaded="if(no_hover,,hotspot_hover(get(linkedscene),get(name)));" zorder="0"
+       onclick="if(linkedscene,
+        looktohotspot(get(name),null,smooth(200,50,200));
+        set(temp_linkedscene,get(linkedscene));
+        loadscene(get(linkedscene),get(lang_var),MERGE,BLEND(1.5));
+        if(get(skin_settings.select_map),
+          loop_all_select_plugins();
+          subtxt(select_map,get(temp_linkedscene),10,3);
+          txtadd(select_map,'smh',get(select_map));
+          plugin_select_activ(get(select_map));
+          );
+        if(get(skin_settings.floor_map),
+          loop_all_plugins();
+          subtxt(map_number,get(temp_linkedscene),10,3);
+          txtadd(map_number,'h',get(map_number));
+          plugin_activ(get(map_number));
+          move_radar_position(
+            get(plugin[get(map_number)].x),
+            get(plugin[get(map_number)].y),
+            get(plugin[get(map_number)].heading),
+            get(plugin[get(map_number)].radar_visible),
+            get(plugin[get(map_number)].parent)
+          );
+        );
+        skin_updatescroll();
+        );"
+       zoom="true"
+       onhover=""
+	       />
+	<style name="skin_hotspotstyle_down" rotate="180" url="%FIRSTXML%/assets/skin/arrow2.png" scale="0.8" edge="center" oy="0"
+		   onloaded="if(no_hover,,hotspot_hover(get(linkedscene),get(name)));" zorder="0"
+       onclick="if(linkedscene,
+        looktohotspot(get(name),null,smooth(200,50,200));
+        set(temp_linkedscene,get(linkedscene));
+        loadscene(get(linkedscene),get(lang_var),MERGE,BLEND(1.5));
+        if(get(skin_settings.select_map),
+          loop_all_select_plugins();
+          subtxt(select_map,get(temp_linkedscene),10,3);
+          txtadd(select_map,'smh',get(select_map));
+          plugin_select_activ(get(select_map));
+        );
+        if(get(skin_settings.floor_map),
+          loop_all_plugins();
+          subtxt(map_number,get(temp_linkedscene),10,3);
+          txtadd(map_number,'h',get(map_number));
+          plugin_activ(get(map_number));
+          move_radar_position(
+            get(plugin[get(map_number)].x),
+            get(plugin[get(map_number)].y),
+            get(plugin[get(map_number)].heading),
+            get(plugin[get(map_number)].radar_visible),
+            get(plugin[get(map_number)].parent)
+          );
+        );
+        skin_updatescroll();
+        );"
+       zoom="true"
+       onhover=""
+	       />
+	<style name="skin_hotspotstyle_left" rotate="-90" url="%FIRSTXML%/assets/skin/arrow2.png" scale="0.8" edge="center" oy="0"
+           onloaded="if(no_hover,,hotspot_hover(get(linkedscene),get(name)));" zorder="0"
+           onclick="if(linkedscene,
+            looktohotspot(get(name),null,smooth(200,50,200));
+            set(temp_linkedscene,get(linkedscene));
+            loadscene(get(linkedscene),get(lang_var),MERGE,BLEND(1.5));
+  					if(get(skin_settings.select_map),
+  						loop_all_select_plugins();
+  						subtxt(select_map,get(temp_linkedscene),10,3);
+  						txtadd(select_map,'smh',get(select_map));
+  						plugin_select_activ(get(select_map));
+  						);
+  					if(get(skin_settings.floor_map),
+  						loop_all_plugins();
+  						subtxt(map_number,get(temp_linkedscene),10,3);
+  						txtadd(map_number,'h',get(map_number));
+  						plugin_activ(get(map_number));
+  						move_radar_position(
+  							get(plugin[get(map_number)].x),
+  							get(plugin[get(map_number)].y),
+  							get(plugin[get(map_number)].heading),
+                            get(plugin[get(map_number)].radar_visible),
+                            get(plugin[get(map_number)].parent)
+  						);
+  					);
+  					skin_updatescroll();
+  					);"
+  		     zoom="true"
+  	       onhover=""
+	       />
+	<style name="skin_hotspotstyle_right" rotate="90" url="%FIRSTXML%/assets/skin/arrow2.png" scale="0.8" edge="center" oy="0"
+           onloaded="if(no_hover,,hotspot_hover(get(linkedscene),get(name)));" zorder="0"
+           onclick="if(linkedscene,
+            looktohotspot(get(name),null,smooth(200,50,200));
+            set(temp_linkedscene,get(linkedscene));
+            loadscene(get(linkedscene),get(lang_var),MERGE,BLEND(1.5));
+  					if(get(skin_settings.select_map),
+  						loop_all_select_plugins();
+  						subtxt(select_map,get(temp_linkedscene),10,3);
+  						txtadd(select_map,'smh',get(select_map));
+  						plugin_select_activ(get(select_map));
+  						);
+  					if(get(skin_settings.floor_map),
+  						loop_all_plugins();
+  						subtxt(map_number,get(temp_linkedscene),10,3);
+  						txtadd(map_number,'h',get(map_number));
+  						plugin_activ(get(map_number));
+  						move_radar_position(
+  							get(plugin[get(map_number)].x),
+  							get(plugin[get(map_number)].y),
+  							get(plugin[get(map_number)].heading),
+                            get(plugin[get(map_number)].radar_visible),
+                            get(plugin[get(map_number)].parent)
+  						);
+  					);
+  					skin_updatescroll();
+  					);"
+  		     zoom="true"
+  	       onhover=""
+	       />
+    <style name="skin_hotspotstyle_info" rotate="0" url="/%FIRSTXML%/assets/skin/info.png" scale="1.0" edge="center" oy="0" onloaded="" zoom="true" zorder="0" />
+    <style name="skin_hotspotstyle_area" rotate="0" url="/%FIRSTXML%/assets/skin/info.png" scale="1.0" edge="center" oy="0" zorder="0"
+           onhover="if(no_hover,,showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].InfoHotspot),MouseHoverStyle));"
+           onclick="if(device.ios OR device.android,hotspot_area_hover(areaHotspots,name,hover_state););"
+           onover="hotspot_area_hover(areaHotspots,name,hover_state);"
+           onout="hotspot_area_hover(areaHotspots,name,hover_state);"
+           hover_state="false"
+           zoom="true"
+            />
+    <action name="hotspot_area_hover">
+        for(set(m,0), m LT %1.count, inc(m),
+            txtadd(Hover_Temp_Var,'',get(%1[get(m)].name));
+                if(%3 == 'false',
+                    hotspot_area_hover_helper(get(Hover_Temp_Var),1);
+                    ,
+                    hotspot_area_hover_helper(get(Hover_Temp_Var),0);
+                );
+        );
+        if(%3 == 'false',set(hotspot[get(%2)].hover_state,true),set(hotspot[get(%2)].hover_state,false));
+    </action>
+    <action name="hotspot_area_hover_helper">
+        tween(hotspot[%1].alpha,%2);
+    </action>
+	<action name="hotspot_hover">
+		for(set(m,0), m LT scene.count, inc(m),
+			txtadd(GetMySceneName,'scene_pano',get(m));
+			if(%1 == GetMySceneName,
+				set(hotspot[%2].onhover,if(skin_settings.tooltips_hotspots, if(linkedscene, showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang)].%1),MouseHoverStyle)) ););
+			  );
+		  );
+	</action>
+	<!-- Skin Tooltips Textstyle -->
+	<textstyle name="SKIN_TOOLTIPS" css="font-family:Lato; font-size:16px; font-weight:400;"
+    background="false" border="false" textcolor="0xFFFFFF" effect="dropshadow(1,45,0x000000,4,1);"
+    fadeintime="0.1" fadetime="0.05" />
+
+
+	<!-- Alternative small screen layout for mobile devices (override/extend settings) -->
+
+	<krpano devices="Mobile">
+		<layer name="skin_scroll_window" y="64" y_opened="64" y_closed="15">
+			<layer name="skin_scroll_layer">
+				<layer name="skin_topborder" height="24" />
+				<layer name="skin_title" css="text-align:left; color:#FFFFFF; font-family:Lato; font-weight:400;" />
+				<layer name="skin_scroll_container">
+					<layer name="skin_thumbs" height="200" />
+					<layer name="skin_map">
+					</layer>
+				</layer>
+			</layer>
+		</layer>
+
+		<layer name="skin_control_bar" height="64" y="5" y_opened="5" y_closed="-68">
+			<layer name="skin_btmborder"  visible="false" />
+			<layer name="skin_btn_prev"   scale="1" y="0" align="left" x="0" />
+			<layer name="skin_btn_next"   scale="1" y="0" align="left" x="80" />
+			<layer name="skin_btn_thumbs" scale="1" y="0" align="left" x="160" />
+			<layer name="skin_btn_map"    scale="1" y="0" align="left" x="240" />
+			<layer name="skin_btn_info"   visible="false" />
+			<layer name="skin_btn_lt"     visible="false" />
+			<layer name="skin_btn_rt"     visible="false" />
+			<layer name="skin_btn_up"     visible="false" />
+			<layer name="skin_btn_dn"     visible="false" />
+			<layer name="skin_btn_in"     visible="false" />
+			<layer name="skin_btn_ou"     visible="false" />
+			<layer name="skin_btn_gyro"   scale="1" y="0" align="left" x="320" />
+      <layer name="skin_btn_sound"  scale="1" y="0" align="right" x="160" />
+			<layer name="skin_btn_fs"     scale="1" y="0" align="right" x="80" />
+			<layer name="skin_btn_hide"   scale="1" x="5" />
+			<layer name="skin_btn_show"   scale="1" x="0" y="-58" />
+		</layer>
+
+		<layer name="skin_loadingtext" css="text-align:center; color:#FFFFFF; font-family:Lato; font-weight:400; font-style:italic; font-size:44px;" />
+		<layer name="skin_buttonglow"  scale="2.0" />
+		<layer name="skin_thumbborder" scale="2.0" />
+	</krpano>
+
+	<!-- Additional layout changes for Android Flashplayer Mobiles - different fullscreen button layout, zooming buttons, smaller loading text size -->
+
+	<krpano devices="Mobile+Android+Flash">
+		<layer name="skin_scroll_window">
+			<layer name="skin_scroll_layer">
+				<layer name="skin_title" width="82%" css="text-align:left; color:#FFFFFF; font-family:Lato; font-weight:400; font-size:14px;" />
+			</layer>
+		</layer>
+
+		<layer name="skin_control_bar">
+			<layer name="skin_btn_fs"   scale="1" align="right" x="70" y="0" />
+			<layer name="skin_btn_show" x="-10" y="-40" />
+		</layer>
+
+		<layer name="skin_loadingtext" css="text-align:center; color:#FFFFFF; font-family:Lato; font-weight:400; font-style:italic; font-size:30px;" />
+
+	</krpano>
+
+
+	<!-- Skin Actions -->
+
+	<action name="skin_startup">
+		if(device.mobile == false,
+			copy(layer[skin_control_bar].y, skin_settings.controlbar_offset);
+			copy(layer[skin_control_bar].y_opened, skin_settings.controlbar_offset);
+			add(layer[skin_scroll_window].y, layer[skin_control_bar].height, layer[skin_control_bar].y);
+			add(layer[skin_scroll_window].y_opened, layer[skin_control_bar].height, layer[skin_control_bar].y_opened);
+		);
+
+
+		skin_addthumbs();
+		skin_onresize();
+		skin_updatescroll();
+
+		copy(usegyro, skin_settings.gyro);
+		if(device.desktop, set(usegyro, false));
+		if(device.flash, set(usegyro, false));
+		if(usegyro, copy(plugin[skin_gyro].url, plugin[skin_gyro].html5_url); );
+
+		if(skin_settings.map_toolbar_button == true,
+			set(layer[skin_btn_map].visible, true);
+		  );
+		if(skin_settings.sound_plugin == true,
+			set(layer[skin_btn_sound].visible, true);
+		);
+
+		if(skin_settings.LogoConcept == true,
+			delayedcall(0.1, set(layer[LogoConcept].visible,true) );
+			delayedcall(0.1, set(layer[LogoConcept].enabled,true) );
+		);
+		if(skin_settings.ImageClient == true,
+			set(layer[ImageClient].visible,true);
+			set(layer[ImageClient].enabled,true);
+		);
+		if(skin_settings.LogoClient == true,
+			set(layer[LogoClient].visible,true);
+			set(layer[LogoClient].enabled,true);
+		);
+		if(skin_settings.thumb_language == true
+			,set(layer[TourDefaultLanguage].visible,true);set(layer[TourDefaultLanguage].enabled,true);
+			,set(layer[TourDefaultLanguage].visible,false);set(layer[TourDefaultLanguage].enabled,false);
+		);
+	</action>
+
+	<action name="skin_addthumbs">
+		copy(thumbwidth, skin_settings.thumbswidth);
+		copy(thumbheight, skin_settings.thumbsheight);
+		copy(thumbpadding, skin_settings.thumbspadding);
+		copy(thumbcrop, skin_settings.thumbscrop);
+
+		if(device.mobile,
+			mul(thumbwidth,2);
+			mul(thumbheight,2);
+			mul(thumbpadding,2);
+		  );
+
+		add(thumbxoffset, thumbwidth, thumbpadding);
+		mul(thumbxcenter, thumbxoffset, 0.5);
+		mul(thumbbarwidth, thumbxoffset, scene.count);
+		add(thumbbarwidth, thumbpadding);
+		add(thumbbarheight, thumbpadding, thumbheight);
+		add(thumbbarheight, thumbpadding);
+		copy(layer[skin_thumbs].height, thumbbarheight);
+		copy(layer[skin_thumbs].width, thumbbarwidth);
+
+		for(set(i,0), i LT scene.count, inc(i),
+			txtadd(thumbname,'skin_thumb_',get(i));
+
+			addlayer(get(thumbname));
+			copy(layer[get(thumbname)].url, scene[get(i)].thumburl);
+			set(layer[get(thumbname)].keep, true);
+			set(layer[get(thumbname)].parent, 'skin_thumbs');
+			set(layer[get(thumbname)].align, lefttop);
+			copy(layer[get(thumbname)].crop, thumbcrop);
+			copy(layer[get(thumbname)].width, thumbwidth);
+			copy(layer[get(thumbname)].height, thumbheight);
+			mul(thumbx, i, thumbxoffset);
+			add(thumbx, thumbpadding);
+			copy(layer[get(thumbname)].x, thumbx);
+			copy(layer[get(thumbname)].y, thumbpadding);
+			add(scene[get(i)].thumbx, thumbx, thumbxcenter);
+			copy(scene[get(i)].thumby, thumbpadding);
+			set(layer[get(thumbname)].linkedscene, get(scene[get(i)].name) );
+			txtadd(layer[get(thumbname)].smh,'smh',get(i));
+			txtadd(layer[get(thumbname)].h,'h',get(i));
+			set(layer[get(thumbname)].onclick,
+				copy(layer[skin_thumbborder].parent, name);
+				if(get(skin_settings.select_map),
+					loop_all_select_plugins();
+					plugin_select_activ(get(layer[get(name)].smh));
+				);
+				if(get(skin_settings.floor_map),
+					loop_all_plugins();
+					plugin_activ(get(layer[get(name)].h));
+					move_radar_position(
+						get(plugin[get(layer[get(name)].h)].x),
+						get(plugin[get(layer[get(name)].h)].y),
+						get(plugin[get(layer[get(name)].h)].heading),
+						get(plugin[get(layer[get(name)].h)].radar_visible),
+                        get(plugin[get(layer[get(name)].h)].parent)
+					);
+				);
+				loadscene(get(linkedscene), get(lang_var), MERGE, BLEND(1.5));
+			);
+			if(skin_settings.tooltips_thumbs,
+				set(layer[get(thumbname)].onhover, showtext(get(scene[get(linkedscene)].title),SKIN_TOOLTIPS); );
+			  );
+		 );
+	</action>
+
+    <action name="UpdateThumbsToolbar">
+        for(set(i,0), i LT scene.count, inc(i),
+            txtadd(thumbname,'skin_thumb_',get(i));
+            set(layer[get(thumbname)].onhover, showtext(get(scene[get(linkedscene)].title),SKIN_TOOLTIPS););
+        );
+    </action>
+
+	<action name="skin_addmapspots">
+		for(set(i,0), i LT scene.count, inc(i),
+			if(scene[get(i)].lat,
+				txtadd(spotname, 'spot', get(i));
+				txtadd(spotclickevent, 'activatespot(',get(spotname),'); loadscene(', get(scene[get(i)].name), ',get(lang_var),MERGE,BLEND(1.5)); skin_updatescroll(); delayedcall(0.5,skin_showmap(false,'force'));');
+				copy(scene[get(i)].mapspotname, spotname);
+				if(skin_settings.tooltips_mapspots, txtadd(spothoverevent,'showtext(',get(scene[get(i)].title),',SKIN_TOOLTIPS)'); , set(spothoverevent,null); );
+				addspot(get(spotname), get(scene[get(i)].lat), get(scene[get(i)].lng), get(scene[get(i)].heading), false, get(spotclickevent), get(spothoverevent));
+			  );
+		  );
+		activatespot(spot0);
+		zoomToSpotsExtent();
+	</action>
+
+	<action name="skin_onresize">
+		mul(mh, stageheight, -1);
+		if(layer[skin_thumbs].state == 'opened', add(mh,layer[skin_thumbs].height); );
+		if(layer[skin_map].state == 'opened', sub(hh,stageheight,skin_settings.controlbar_offset); sub(hh,layer[skin_control_bar].height); sub(hh,32); copy(layer[skin_map].height, hh); add(mh,hh); );
+		set(layer[skin_scroll_layer].y, get(mh));
+    if(stagewidth LT 810,set(plugin[container_map].scale,0.65),
+                      if(stagewidth GT 810,
+                                if(stagewidth LT 1030,set(plugin[container_map].scale,0.75),set(plugin[container_map].scale,1.0)) ) );
+    if(stagewidth LT 500,set(plugin[container_map].visible,false));
+    if(stagewidth GT 500,set(plugin[container_map].visible,true));
+		if(stagewidth LT 810,set(plugin[skin_map].scale,0.3),
+											if(stagewidth GT 810,
+																if(stagewidth LT 1030,set(plugin[skin_map].scale,0.4),
+																	if(stagewidth LT 1300,set(plugin[skin_map].scale,0.6),
+																		if(stagewidth LT 1400,set(plugin[skin_map].scale,0.7),
+																				if(stagewidth LT 1600,set(plugin[skin_map].scale,0.75),set(plugin[skin_map].scale,0.8)) ) ) ) ) ) ;
+		if(device.mobile OR stagewidth LT 450,skin_showbuttons(false), skin_showbuttons(true));
+        if(device.mobile == false
+            AND stagewidth LT skin_settings.hide_on_width_lower_than
+            AND skin_settings.select_map,
+                set(plugin[select_menu_holder].visible,false);
+                set(plugin[select_menu_holder].enabled,false);
+                ,
+                set(plugin[select_menu_holder].visible,true);
+                set(plugin[select_menu_holder].enabled,true);
+        );
+	</action>
+
+	<action name="skin_showbuttons">
+		set(layer[skin_btn_lt].visible, %1);
+		set(layer[skin_btn_rt].visible, %1);
+		set(layer[skin_btn_up].visible, %1);
+		set(layer[skin_btn_dn].visible, %1);
+		set(layer[skin_btn_in].visible, %1);
+		set(layer[skin_btn_ou].visible, %1);
+		set(layer[skin_btn_info].visible, %1);
+		ifnot(device.mobile,
+			if(skin_settings.sound_plugin == true,
+				set(layer[skin_btn_sound].visible, true);
+			);
+			set(layer[skin_btn_fs].visible, %1);
+		);
+		ifnot(skin_settings.map_toolbar_button,
+			set(layer[skin_btn_gyro].x,240);
+			,
+			set(layer[skin_btn_gyro].x,320);
+			);
+		if(%1 == true,
+			if(plugin[skin_gyro].available == true, set(layer[skin_btn_gyro].visible, %1); );
+			if(device.fullscreensupport, set(layer[skin_btn_fs].visible, %1) );
+		  ,
+			set(layer[skin_btn_gyro].visible, %1);
+		  );
+	</action>
+
+	<action name="skin_updatescroll">
+		if(layer[skin_thumbs].loaded,
+			set(cursceneindex, 0);
+			if(xml.scene, copy(cursceneindex, scene[get(xml.scene)].index));
+			layer[skin_thumbs].setcenter(get(scene[get(cursceneindex)].thumbx), get(scene[get(cursceneindex)].thumby));
+		  );
+	</action>
+
+	<action name="UpdateSceneTitle">
+		set(m,0);
+		skin_scene_title_lang_loop(get(m));
+	</action>
+
+	<action name="skin_scene_title_lang_loop">
+		txtadd(scene_var,'scene_pano',get(m));
+		if(scene[get(xml.scene)].name == scene_var,
+            if(skin_settings.title_name_and_scenename == true,
+                txtadd(layer[skin_title].html,
+                    get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].title) , ' - ', get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano%1) );
+            );
+            if(skin_settings.title_name == true,
+                set(layer[skin_title].html, get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].title) );
+            );
+            if(skin_settings.title_scenename == true,
+                set(layer[skin_title].html, get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano%1) );
+            );
+		);
+		inc(m);
+		if(m LT scene.count, skin_scene_title_lang_loop(get(m)) );
+	 </action>
+
+	<action name="skin_update_scene_infos">
+		delayedcall(0.1, set(layer[skin_title].visible,true) );
+
+		if(scene[get(xml.scene)].index GT 0,
+			set(layer[skin_btn_prev].enabled, true);
+			set(layer[skin_btn_prev].alpha, 1.0);
+		  ,
+			set(layer[skin_btn_prev].enabled, false);
+			set(layer[skin_btn_prev].alpha, 0.3);
+		  );
+
+		sub(lastsceneindex, scene.count, 1);
+		if(scene[get(xml.scene)].index LT lastsceneindex,
+			set(layer[skin_btn_next].enabled, true);
+			set(layer[skin_btn_next].alpha, 1.0);
+		  ,
+			set(layer[skin_btn_next].enabled, false);
+			set(layer[skin_btn_next].alpha, 0.3);
+		);
+
+		txtadd(layer[skin_thumbborder].parent, 'skin_thumb_', get(scene[get(xml.scene)].index));
+		set(layer[skin_thumbborder].visible, true);
+
+		if(scene[get(xml.scene)].mapspotname,
+			layer[skin_map].activatespot(get(scene[get(xml.scene)].mapspotname));
+			layer[skin_map].pantospot(get(scene[get(xml.scene)].mapspotname));
+		  );
+	</action>
+
+	<action name="skin_nextscene">
+		add(newsceneindex, scene[get(xml.scene)].index, %1);
+    if(newsceneindex GE 0 AND newsceneindex LT scene.count,
+        skin_loadscene(get(newsceneindex));
+				txtadd(layer[skin_thumbborder].parent, 'skin_thumb_', get(newsceneindex));
+				layer[skin_thumbs].scrolltocenter(get(scene[get(newsceneindex)].thumbx), get(scene[get(newsceneindex)].thumby));
+                if(get(skin_settings.select_map),
+                    loop_all_select_plugins();
+                    txtadd(select_map,'smh',get(newsceneindex));
+                    plugin_select_activ(get(select_map))
+                );
+                if(get(skin_settings.floor_map),
+                    loop_all_plugins();
+                    txtadd(map_number,'h',get(newsceneindex));
+                    plugin_activ(get(map_number));
+                    move_radar_position(
+                        get(plugin[get(map_number)].x),
+                        get(plugin[get(map_number)].y),
+                        get(plugin[get(map_number)].heading),
+                        get(plugin[get(map_number)].radar_visible),
+                        get(plugin[get(map_number)].parent)
+                    );
+                );
+				loadscene(get(newsceneindex), get(lang_var), MERGE, BLEND(1.5));
+		  );
+	</action>
+
+	<action name="skin_nextscene_loop">
+		add(newsceneindex, scene[get(xml.scene)].index, %1);
+		sub(lastsceneindex, scene.count, 1);
+		if(newsceneindex LT 0, copy(newsceneindex,lastsceneindex));
+		if(newsceneindex GT lastsceneindex, set(newsceneindex,0));
+    skin_loadscene(get(newsceneindex));
+	</action>
+  <action name="skin_loadscene">
+		txtadd(layer[skin_thumbborder].parent, 'skin_thumb_', get(scene[%1].index));
+		layer[skin_thumbs].scrolltocenter(get(scene[%1].thumbx), get(scene[%1].thumby));
+		loadscene(get(scene[%1].name), get(lang_var), MERGE, BLEND(1.5));
+	</action>
+
+	<action name="skin_buttonglow">
+		if(%1 != null,
+			set(strength,0.7);
+			if(%2 != null, set(strength,%2));
+			set(layer[skin_buttonglow].parent, %1);
+			set(layer[skin_buttonglow].visible, true);
+			tween(layer[skin_buttonglow].alpha, get(strength), 0.07);
+		  ,
+			tween(layer[skin_buttonglow].alpha, 0.0, 0.1, default, set(layer[skin_buttonglow].parent, null); set(layer[skin_buttonglow].visible, false); );
+		);
+	</action>
+
+    <action name="skin_hideskin">
+        if(skin_settings.day_night_state == true,hideDayNightSlider());
+        if(skin_settings.thumb_language,set(plugin[TourDefaultLanguage].visible,false));
+        select_menu_hide();
+        skin_showmap(false,'force');
+        if(layer[skin_thumbs].state != 'closed', skin_showthumbs(false); wait(0.25); );
+
+        tween(layer[skin_scroll_window].y, get(layer[skin_scroll_window].y_closed), 0.5, easeOutQuint);
+        tween(layer[skin_control_bar].y, get(layer[skin_control_bar].y_closed), 0.5, easeOutQuint);
+
+        set(layer[skin_btn_show].visible,true);
+        tween(layer[skin_btn_show].alpha, 1, 0.25, easeOutQuint);
+        tween(layer[LogoConcept].x, 55, 0.25, easeOutQuint);
+    </action>
+
+    <action name="skin_showskin">
+        if(skin_settings.day_night_state == true,showDayNightSlider());
+        if(DayNightOff != null, if(DayNightOff == true, ,));
+        if(skin_settings.thumb_language,set(plugin[TourDefaultLanguage].visible,true));
+        select_menu_show();
+        skin_showmap(true,'force');
+        tween(layer[skin_scroll_window].y, get(layer[skin_scroll_window].y_opened), 0.5, easeOutQuint);
+        tween(layer[skin_control_bar].y, get(layer[skin_control_bar].y_opened), 0.5, easeOutQuint);
+        set(layer[skin_btn_show].visible,false);
+        tween(layer[skin_btn_show].alpha,0,0);
+        tween(layer[LogoConcept].x, 5, 0.25, easeOutQuint);
+    </action>
+
+	<action name="skin_showthumbs">
+		if(%1 == null, if(layer[skin_thumbs].state == 'closed', set(show,true), set(show,false)); , set(show,%1); );
+		mul(mh, layer[skin_scroll_layer].pixelheight, -1);
+		if(layer[skin_scroll_layer].y == -100%, copy(layer[skin_scroll_layer].y,mh));
+		if(show,
+			set(layer[skin_thumbs].state, 'opened');
+			add(mh, layer[skin_thumbs].height);
+			tween(layer[skin_scroll_layer].y, get(mh), 0.5, easeOutQuint);
+			set(layer[skin_thumbs].visible, true);
+			tween(layer[skin_thumbs].alpha, 1.0, 0.25);
+			tween(layer[skin_map].alpha, 0.0, 0.25, default, set(layer[skin_map].visible,false));
+      if(skin_settings.thumb_language,set(plugin[TourDefaultLanguage].visible,false));
+		  ,
+			set(layer[skin_thumbs].state, 'closed');
+			tween(layer[skin_scroll_layer].y, get(mh), 0.5, easeOutQuint, set(layer[skin_thumbs].visible, false););
+      if(skin_settings.thumb_language,set(plugin[TourDefaultLanguage].visible,true));
+		);
+	</action>
+
+    <action name="skin_showmap">
+        set(skin_showmap_flag, %1);
+        if(skin_settings.map_position != 'null',
+            if(skin_settings.map_position == 'embed',
+                toggle_map_embed(skin_showmap_flag);
+                ,
+                if(skin_settings.floor_map,
+                    if(%2 == 'force',
+                        toggle_map_state(skin_showmap_flag);
+                    );
+                );
+            );
+        );
+    </action>
+	<action name="toggle_map_embed">
+		if(%1 == null, if(layer[skin_map].state == 'closed', set(show,true), set(show,false)); , set(show,%1); );
+		mul(mh, layer[skin_scroll_layer].pixelheight, -1);
+		if(layer[skin_scroll_layer].y == -100%, copy(layer[skin_scroll_layer].y,mh));
+		if(show,
+			tween(layer[ImageClient].alpha, 0.0, 0.25, default, set(layer[ImageClient].visible,false));
+			tween(layer[LogoClient].alpha, 0.0, 0.25, default, set(layer[LogoClient].enabled,false));
+			tween(layer[LogoConcept].alpha, 0.0, 0.25, default, set(layer[LogoConcept].enabled,false));
+			tween(layer[TourDefaultLanguage].alpha, 0.0, 0.25, default, set(layer[TourDefaultLanguage].enabled,false));
+			tween(layer[skin_thumbs].alpha, 0.0, 0.25, default, set(layer[skin_thumbs].visible,false));
+			set(layer[skin_map].visible, true);
+			tween(layer[skin_map].alpha, 1.0, 0.25);
+			set(layer[skin_map].state, 'opened');
+			sub(hh,stageheight,skin_settings.controlbar_offset);
+			sub(hh,layer[skin_control_bar].height);
+			sub(hh,32);
+			add(mh,hh);
+			copy(layer[skin_map].height, hh);
+			tween(layer[skin_scroll_layer].y, get(mh), 0.5, easeOutQuint);
+			select_menu_hide_map();
+		  ,
+			set(layer[skin_map].state, 'closed');
+			if(skin_settings.ImageClient,set(layer[ImageClient].visible, true); tween(layer[ImageClient].alpha, 1.0, 0.25););
+			if(skin_settings.LogoClient,set(layer[LogoClient].visible, true); tween(layer[LogoClient].alpha, 1.0, 0.25););
+			set(layer[LogoConcept].enabled, true); tween(layer[LogoConcept].alpha, 1.0, 0.25);
+			set(layer[TourDefaultLanguage].enabled, true); tween(layer[TourDefaultLanguage].alpha, 1.0, 0.25);
+			tween(layer[skin_scroll_layer].y, get(mh), 0.5, easeOutQuint, set(layer[skin_map].visible,false) );
+			select_menu_show_map();
+		  );
+	</action>
+
+	<action name="skin_openlogo">
+		if(layer[ImageClient].state == 'small',
+			set(layer[ImageClient].state, 'opening');
+			copy(backup_logo_align, layer[ImageClient].align);
+			copy(backup_logo_x, layer[ImageClient].x);
+			copy(backup_logo_y, layer[ImageClient].y);
+			copy(backup_logo_scale, layer[ImageClient].scale);
+			layer[ImageClient].changeorigin(center);
+			tween(layer[ImageClient].x, 0, 0.5, easeOutQuint);
+			tween(layer[ImageClient].y, 0, 0.5, easeOutQuint);
+			tween(layer[ImageClient].scale, 1, 0.5, easeOutQuint);
+			delayedcall(0.5, set(layer[ImageClient].state, 'opened') );
+			delayedcall(0, set(events[skin_events].onmouseup, delayedcall(0, skin_closelogo()) ) );
+		  );
+	</action>
+
+	<action name="skin_closelogo">
+		if(layer[ImageClient].state == 'opened',
+			set(layer[ImageClient].state, 'closing');
+			layer[ImageClient].changeorigin(get(backup_logo_align));
+			if(%1 == 'now',
+				stoptween(layer[ImageClient].x, layer[ImageClient].y, layer[ImageClient].scale);
+				copy(layer[ImageClient].x, backup_logo_x);
+				copy(layer[ImageClient].y, backup_logo_y);
+				copy(layer[ImageClient].scale, backup_logo_scale);
+				set(layer[ImageClient].state, 'small');
+			  ,
+				tween(layer[ImageClient].x, get(backup_logo_x), 0.5, easeOutQuint);
+				tween(layer[ImageClient].y, get(backup_logo_y), 0.5, easeOutQuint);
+				tween(layer[ImageClient].scale, get(backup_logo_scale), 0.5, easeOutQuint);
+				delayedcall(0.5, set(layer[ImageClient].state, 'small'));
+			  );
+			set(events[skin_events].onmouseup, null);
+		  );
+	</action>
+
+	<action name="loadingpercent_startloading">
+		set(loadingpercent_isloading, true);
+		set(layer[loadingpercent_text].visible, true);
+
+		asyncloop(loadingpercent_isloading,
+			mul(pv, progress.progress, 100);
+			roundval(pv,0);
+			txtadd(layer[loadingpercent_text].html, 'Loading ', get(pv), '%');
+		  );
+	</action>
+
+	<action name="loadingpercent_stoploading">
+		set(loadingpercent_isloading, false);
+		set(layer[loadingpercent_text].visible, false);
+	</action>
+
+    <action name="manageSounds">
+        if(skin_settings.sound_plugin,
+            if(skin_settings.sound_state == "on",
+                set(skin_settings.sound_state,"off");
+                ToolbarActionButtonSoundOff();
+                ,
+                set(skin_settings.sound_state,"on");
+                ToolbarActionButtonSoundOn();
+            );
+        );
+    </action>
+    <action name="test_thumbs_open">
+      if(device.mobile == false,
+        delayedcall(1,
+          skin_buttonglow(skin_btn_thumbs);
+          skin_showthumbs();
+          delayedcall(1,skin_buttonglow(null));
+        );
+        delayedcall(5,
+            if(layer[skin_thumbs].state != 'closed'
+                ,
+                skin_buttonglow(skin_btn_thumbs);
+                skin_showthumbs(false);
+                delayedcall(0.5,skin_buttonglow(null));
+            );
+        );
+  		);
+    </action>
+</krpano>

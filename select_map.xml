@@ -1,0 +1,272 @@
+<krpano>
+    <skin_settings select_map="false"
+                   column_one_padding="5"
+                   column_two_padding="190"
+                   row_distance="25"
+                   top_padding="30"
+                   hide_on_width_lower_than="550"
+                   initial_select_map_load="false"
+                   />
+    <style name="style_title_smh" keep="true" url="%FIRSTXML%/plugins/textfield.swf" align="center" edge="center" width="180" height="20" autoheight="true" x="0" y="-1" enabled="false"
+      background="false" border="false" css="text-align:center; color:#FFFFFF; font-family:Lato; font-weight:normal; font-size:12px;" textshadow="1" visible="true"/>
+    <style name="style_title_smh_buttons" keep="true" url="%FIRSTXML%/plugins/textfield.swf" align="center" edge="center" width="180" height="20" autoheight="true" x="0" y="0" enabled="false"
+      background="false" border="false" css="text-align:center; color:#FFFFFF; font-family:Lato; font-weight:normal; font-size:12px;" textshadow="1" visible="true"/>
+    <style name="style_smh_buttons" type="container" keep="true" width="180" height="20" align="top left" scale="1.0" alpha="0.70" x="0" y="0" enabled="true"
+	  visible="false"
+       bgcapture="true" bgcolor="0x081f3f" bgalpha="0.75" onover="tween(alpha,1,0.2,easeoutquad);" onout="tween(alpha,0.70,0.2,easeoutquad);"
+       onloaded="if(column == 1,
+            set(x,get(skin_settings.column_one_padding));
+            ,
+            set(x,get(skin_settings.column_two_padding)););
+            mul(row_position,row,get(skin_settings.row_distance));
+            add(row_position,get(skin_settings.top_padding));
+            set(y,get(row_position));
+            delete(row_position);"
+       onclick="skin_loadscene(get(linkedscene),get(skin_settings.loadscene_blend));
+                if(skin_settings.floor_map,
+                    loop_all_plugins();
+                    txtadd(map_number,'h',get(linkedscene));
+                    plugin_activ(get(map_number));
+                    move_radar_position(
+                        get(plugin[get(map_number)].x),
+                        get(plugin[get(map_number)].y),
+                        get(plugin[get(map_number)].heading),
+                        get(plugin[get(map_number)].radar_visible),get(plugin[get(map_number)].parent)
+                    );
+                    delete(map_number);
+                );
+                loop_all_select_plugins();plugin_select_activ(get(name));
+                skin_updatescroll();"
+    />
+
+    <action name="SelectMapRefreshTitles">
+        if( skin_settings.thumb_language OR skin_settings.initial_select_map_load,
+            set(skin_settings.initial_select_map_load,false);
+            for(set(s_counter,0), s_counter LT scene.count, inc(s_counter),
+                SelectMapRefreshTitles_trigger(get(s_counter));
+            );
+            delete(counter);
+            delete(select_plugin_title_name);
+            call(plugin[select_menu_open].onloaded);
+            call(plugin[select_menu_close].onloaded);
+        );
+    </action>
+    <action name="SelectMapRefreshTitles_trigger">
+        txtadd(select_plugin_title_name,'title_smh',%1);
+        set(layer[get(select_plugin_title_name)].html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano%1));
+    </action>
+    <action name="plugin_select_activ">
+        set(plugin[%1].alpha,1.0);
+        set(plugin[%1].onout,tween(plugin[%1].alpha,1,0.2,easeoutquad););
+    </action>
+    <action name="loop_all_select_plugins">
+        for(set(s_counter,0), s_counter LE scene.count, inc(s_counter),
+            txtadd(temp_select_var,'smh',get(s_counter));
+            set(plugin[get(temp_select_var)].alpha,0.70);
+            set(plugin[get(temp_select_var)].onout,tween(alpha,0.70,0.2,easeoutquad););
+        );
+        delete(s_counter);
+        delete(temp_select_var);
+    </action>
+    <layer name="select_menu_holder" type="container"  align="top left" x="5" y="5" state="opened" visible="true" enabled="true" scalechildren="true" scale="0.9" keep="true" alpha="1" zorder="5000" handcursor="false">
+        <layer name="select_menu_open" type="container" keep="true" width="365" height="27" align="top left" scale="1.0" x="5.0" y="0.0" alpha="0.0" bgcapture="true" bgcolor="0x081f3f" bgalpha="0.75" zorder="5000"
+            onloaded="set(layer[title_select_menu_open].html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].select_menu_open));" enabled="false" visible="false" onclick="select_menu_open();">
+            <layer name="title_select_menu_open" style="style_title_smh_buttons" html=""/>
+        </layer>
+        <layer name="select_menu_close"  type="container" keep="true" width="365" height="27" align="top left" scale="1.0" x="5.0" y="0.0" alpha="1.0" bgcapture="true" bgcolor="0x081f3f" bgalpha="0.75" zorder="5001"
+            onloaded="set(layer[title_select_menu_close].html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].select_menu_close));" enabled="true" visible="false" onclick="select_menu_close();">
+            <layer name="title_select_menu_close" style="style_title_smh_buttons" html=""/>
+        </layer>
+        <layer name="smh0"
+            style="style_smh_buttons"
+            linkedscene="0"
+            column="1"
+            row="6"
+        >
+            <layer name="title_smh0" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano0));"/>
+        </layer>
+
+        <layer name="smh1"
+            style="style_smh_buttons"
+            linkedscene="1"
+            column="1"
+            row="7"
+        >
+           <layer name="title_smh1" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano1));"/>
+        </layer>
+        <layer name="smh2"
+               style="style_smh_buttons"
+               linkedscene="2"
+               column="2"
+               row="6"
+        >
+            <layer name="title_smh2" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano2));"/>
+        </layer>
+
+        <layer name="smh3"
+               style="style_smh_buttons"
+               linkedscene="3"
+               column="2"
+               row="2"
+        >
+            <layer name="title_smh3" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano3));"/>
+        </layer>
+        <layer name="smh4"
+               style="style_smh_buttons"
+               linkedscene="4"
+               column="1"
+               row="3"
+        >
+            <layer name="title_smh4" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano4));"/>
+        </layer>
+
+        <layer name="smh5"
+               style="style_smh_buttons"
+               linkedscene="5"
+               column="2"
+               row="3"
+        >
+            <layer name="title_smh5" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano5));"/>
+        </layer>
+        <layer name="smh6"
+               style="style_smh_buttons"
+               linkedscene="6"
+               column="1"
+               row="5"
+        >
+            <layer name="title_smh6" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano6));"/>
+        </layer>
+        <layer name="smh7"
+               style="style_smh_buttons"
+               linkedscene="7"
+               column="2"
+               row="5"
+        >
+            <layer name="title_smh7" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano7));"/>
+        </layer>
+        <layer name="smh8"
+               style="style_smh_buttons"
+               linkedscene="8"
+               column="1"
+               row="4"
+        >
+            <layer name="title_smh8" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano8));"/>
+        </layer>
+        <layer name="smh9"
+               style="style_smh_buttons"
+               linkedscene="9"
+               column="2"
+               row="4"
+        >
+            <layer name="title_smh9" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano9));"/>
+        </layer>
+        <layer name="smh10"
+               style="style_smh_buttons"
+               linkedscene="10"
+               column="1"
+               row="0"
+        >
+            <layer name="title_smh10" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano10));"/>
+        </layer>
+        <layer name="smh11"
+               style="style_smh_buttons"
+               linkedscene="11"
+               column="2"
+               row="0"
+        >
+            <layer name="title_smh11" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano11));"/>
+        </layer>
+        <layer name="smh12"
+               style="style_smh_buttons"
+               linkedscene="12"
+               column="2"
+               row="1"
+        >
+            <layer name="title_smh12" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano12));"/>
+        </layer>
+        <layer name="smh13"
+               style="style_smh_buttons"
+               linkedscene="13"
+               column="1"
+               row="1"
+        >
+            <layer name="title_smh13" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano13));"/>
+        </layer>
+        <layer name="smh14"
+               style="style_smh_buttons"
+               linkedscene="14"
+               column="1"
+               row="2"
+        >
+            <layer name="title_smh14" style="style_title_smh" html="" onloaded="set(html,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano14));"/>
+        </layer>
+    </layer>
+    <action name="loop_select_menu_hide_helper">
+        set(plugin[%1].enabled,false);
+        tween(plugin[%1].x,%2,0.8,easeOutQuart);
+    </action>
+    <action name="select_menu_hide">
+        for(set(counter,0), counter LT scene.count, inc(counter),
+            txtadd(select_name,'smh',get(counter));
+            if(plugin[get(select_name)].column == 1,
+                loop_select_menu_hide_helper(get(select_name),-300);
+                ,
+                loop_select_menu_hide_helper(get(select_name),-300);
+            );
+        );
+        delete(counter);
+        delete(select_name);
+    </action>
+    <action name="loop_select_menu_show_helper">
+        set(plugin[%1].enabled,true);
+        tween(plugin[%1].x,%2,0.8,easeOutQuart);
+    </action>
+    <action name="select_menu_show">
+        for(set(counter,0), counter LT scene.count, inc(counter),
+            txtadd(select_name,'smh',get(counter));
+            if(plugin[get(select_name)].column == 1,
+                loop_select_menu_show_helper(get(select_name),5);
+                ,
+                loop_select_menu_show_helper(get(select_name),190);
+            );
+        );
+        delete(counter);
+        delete(select_name);
+    </action>
+    <action name="select_menu_hide_map">
+        select_menu_hide();
+        tween(plugin[select_menu_open].y,0,0.2,easeOutQuart,set(plugin[select_menu_open].visible,false));
+        tween(plugin[select_menu_close].y,0,0.2,easeOutQuart,set(plugin[select_menu_close].visible,false));
+        
+    </action>
+    <action name="select_menu_show_map">
+        select_menu_show();
+        set(plugin[select_menu_open].visible,true);
+        tween(plugin[select_menu_open].y,0,0.1,easeOutQuart);
+        set(plugin[select_menu_close].visible,true);
+        tween(plugin[select_menu_close].y,0,0.1,easeOutQuart);
+        
+    </action>
+
+    <action name="select_menu_close">
+        set(plugin[select_menu_close].zorder,5000);
+
+        set(plugin[select_menu_close].enabled,false);
+        tween(plugin[select_menu_close].alpha,0.0,0.3,easeoutquad);
+        tween(plugin[select_menu_open].alpha,1.0,0.3,easeoutquad,
+           set(plugin[select_menu_open].zorder,5001);
+            set(plugin[select_menu_open].enabled,true);
+        );
+        select_menu_hide();
+    </action>
+    <action name="select_menu_open">
+      set(plugin[select_menu_open].zorder,5000);
+        set(plugin[select_menu_open].enabled,false);
+        tween(plugin[select_menu_open].alpha,0.0,0.3,easeoutquad);
+        tween(plugin[select_menu_close].alpha,1.0,0.3,easeoutquad,
+            set(plugin[select_menu_close].enabled,true);
+            set(plugin[select_menu_close].zorder,5001);
+        );
+        select_menu_show();
+    </action>
+</krpano>

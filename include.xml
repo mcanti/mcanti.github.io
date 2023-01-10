@@ -1,0 +1,296 @@
+<krpano version="1.19" logkey="true">
+
+<include url="plugins/showtext.xml" />
+<include url="language.xml"/>
+<include url="select_map.xml" />
+
+<events
+	onenterfullscreen="set(plugin[openfs].visible,false); set(plugin[closefs].visible,true);"
+	onexitfullscreen ="set(plugin[openfs].visible,true);  set(plugin[closefs].visible,false);"
+	onresize="ResizeElements();"
+	onxmlcomplete="CheckTabletPhone();ResizeElements();events.dispatch(SetCurrentScene);"
+	onloadcomplete=""
+/>
+<events name="events1" keep="true" UpdateLanguageElements="
+        SetSceneTitle();
+        UpdateSceneTitle();
+        if(get(skin_settings.tooltips_thumbs),UpdateThumbsToolbar(););
+        if(get(skin_settings.select_map),SelectMapRefreshTitles());
+        if(get(skin_settings.day_night_text_popup),updateDayNightTextPopup());
+        updateHelpPlugin(get(plugin[TourDefaultLanguage].GetDefaultLang));
+        "/>
+<events name="events2" keep="true" SetCurrentScene="set(current_scene,xml.scene);" />
+
+<progress showload="none" showwait="none" />
+
+<action name="SetSceneTitle">
+		set(scene_loop_var,0);
+		SetSceneTitle_loop(get(scene_loop_var));
+</action>
+<action name="SetSceneTitle_loop">
+		set(scene[get(scene_loop_var)].title,get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano%1));
+		inc(scene_loop_var);
+		if(scene_loop_var LT scene.count, SetSceneTitle_loop(get(scene_loop_var)) );
+</action>
+<action name="VerifyLanguage">
+	ifnot(lang == "ro" OR lang == "en" OR lang == "de" OR lang == "fr",
+		set(lang,get(plugin[TourDefaultLanguage].GetDefaultLang));
+	);
+	set(plugin[TourDefaultLanguage].GetDefaultLang,get(lang));
+    txtadd(lang_var,'lang=',get(lang));
+</action>
+<action name="updateHelpPlugin">
+    if(%1=="ro",
+        set(plugin[HelpPlugin].url,%FIRSTXML%/assets/help/splash_ro.jpg);
+    );
+    if(%1=="en",
+        set(plugin[HelpPlugin].url,%FIRSTXML%/assets/help/splash_en.jpg);
+    );
+    if(%1=="de",
+        set(plugin[HelpPlugin].url,%FIRSTXML%/assets/help/splash_de.jpg);
+    );
+    if(%1=="fr",
+        set(plugin[HelpPlugin].url,%FIRSTXML%/assets/help/splash_fr.jpg);
+    );
+</action>
+<action name="CheckTabletPhone">
+    if(device.ios OR device.android,
+        set(plugin[select_menu_holder].visible,false);
+        set(plugin[select_menu_holder].enabled,false);
+        set(skin_settings.select_map, false);
+
+        set(DayNightOff,true);
+        set(plugin[slider_bg].visible,false);
+        set(plugin[slider_grip].visible,false);
+        ,
+        set(DayNightOff,false)
+    );
+</action>
+<action name="ResizeElements">
+	if(stagewidth LT 810,ResizeElements800px();,
+		if(stagewidth GT 810,
+			if(stagewidth LT 1030,ResizeElements1024px();,ResizeElements1280px();
+			);
+		);
+	);
+</action>
+<action name="ResizeElements800px">
+	set(plugin[HelpPlugin].scale,0.6);
+	set(plugin[LogoConcept].scale,0.6);
+	set(plugin[LogoClient].max,0.6);
+	set(plugin[closebutton].scale,0.7);
+</action>
+<action name="ResizeElements1024px">
+	set(plugin[HelpPlugin].scale,0.75);
+	set(plugin[LogoConcept].scale,0.65);
+	set(plugin[LogoClient].max,0.7);
+	set(plugin[closebutton].scale,0.8);
+</action>
+<action name="ResizeElements1280px">
+	set(plugin[HelpPlugin].scale,0.9);
+	set(plugin[LogoConcept].scale,0.7);
+	set(plugin[LogoClient].max,0.8);
+	set(plugin[closebutton].scale,1.0);
+</action>
+<hotspot name="nadirlogo"
+	    url="%FIRSTXML%/assets/logos/nadir.png"
+	    ath="0"
+	    atv="90"
+		zorder="2" keep="true"
+	    distorted="true"
+	    scale="0.4"
+		alpha="1.0"
+	    rotate="0.0"
+	    rotatewithview="false"
+	    onloaded="switch(rotatewithview); invalidatescreen();"
+/>
+<plugin name="HelpPlugin"
+		url="%FIRSTXML%/assets/help/splash_ro.jpg"
+		keep="true"
+		enabled="false"
+		visible="false"
+		align="center"
+		x="0"
+		y="0"
+		zorder="9998"
+		alpha="0.0"
+		scale="0.9"
+		onclick="CloseHelpPlugin();"
+		help_state="0"
+/>
+<plugin name="HelpCloseButton"
+		parent="HelpPlugin"
+		url="%FIRSTXML%/assets/help/closebutton.png"
+		visible="true"
+		enabled="true"
+		keep="false"
+		scale="1.0"
+		zorder="9999"
+		align="righttop"
+		x="-15"
+		y="-15"
+		onclick="CloseHelpPlugin();"
+/>
+<plugin name="HelpMask"
+		url="%FIRSTXML%/assets/help/mask.jpg"
+		blendmode="multiply"
+		alpha="0.0"
+		visible="false"
+		origin="lefttop"
+		width="100%"
+		height="100%"
+		enabled="false"
+		zorder="-1"
+		keep="false"
+/>
+<action name="CloseHelpPlugin">
+		set(plugin[HelpPlugin].help_state,0);
+		set(autorotate.enabled,true);
+		tween(plugin[HelpMask].alpha,0.0,0.5,default,set(plugin[HelpMask].visible,false));
+		tween(plugin[HelpPlugin].alpha,0.0,1.0,default,set(plugin[HelpPlugin].visible,false);set(plugin[HelpPlugin].enabled,false););
+</action>
+<action name="StartHelpPlugin">
+		set(plugin[HelpPlugin].help_state,1);
+		set(autorotate.enabled,false);
+		set(plugin[HelpMask].visible,true);
+		set(plugin[HelpPlugin].visible,true);
+		set(plugin[HelpPlugin].enabled,true);
+		tween(plugin[HelpMask].alpha,0.5,0.5,default);
+		tween(plugin[HelpPlugin].alpha,1.0,1.0,default);
+		delayedcall(8.0, CloseHelpPlugin());
+</action>
+<action name="begin_rotate">
+	if(plugin[help].help_state==0,
+							if(plugin[data_for_rotate].rotate_stop==true,
+									set(autorotate.enabled,false),
+									autorotate_on();
+
+								);
+					);
+</action>
+<action name="autorotate_on">
+		set(autorotate.enabled,true);
+		set(plugin[autorotate_on].visible,true);
+		set(plugin[autorotate_off].visible,false);
+		set(plugin[data_for_rotate].rotate_stop,false);
+
+</action>
+<action name="autorotate_off">
+		set(autorotate.enabled,false);
+		set(plugin[autorotate_off].visible,true);
+		set(plugin[autorotate_on].visible,false);
+		set(plugin[data_for_rotate].rotate_stop,true);
+</action>
+
+<contextmenu fullscreen="true">
+	<item name="copyright"     caption="Copyright 360concept.ro"         onclick="openurl(http://www.360concept.ro,_blank);" />
+	<item name="Normal"        caption="Projection View - Normal"        onclick="action(view_normal);"        showif="view.vlookatrange == 180" separator="true" />
+	<item name="Fisheye"       caption="Projection View - Fisheye"       onclick="action(view_fisheye);"       showif="view.vlookatrange == 180" devices="flash|webgl" />
+	<item name="Architectural" caption="Projection View - Architectural" onclick="action(view_architectural);" showif="view.vlookatrange == 180" />
+	<item name="Stereographic" caption="Projection View - Stereographic" onclick="action(view_stereographic);" showif="view.vlookatrange == 180" devices="flash|webgl" />
+	<item name="Planet"        caption="Projection View - Little Planet" onclick="action(view_littleplanet);"  showif="view.vlookatrange == 180" devices="flash|webgl" />
+</contextmenu>
+<action name="view_normal">
+		tween(view.fovmax,       150.0, distance(150, 0.25), easeoutquad);
+		tween(view.architectural,  0.0, distance(1.0, 0.25), easeoutquad);
+		tween(view.fisheye,        0.0, distance(1.0, 0.25), easeoutquad);
+</action>
+<action name="view_fisheye">
+		tween(view.architectural, 0.0, distance(1.0, 0.25), easeoutquad);
+		tween(view.fisheye,       0.0 ,distance(1.0, 0.20), easeoutquad,
+				set(view.stereographic,false);
+				set(view.fovmax,179);
+				tween(view.fisheye, 0.35, distance(1.0, 1.25));
+			 );
+</action>
+<action name="view_littleplanet">
+		tween(view.architectural, 0.0, distance(1.0, 0.25), easeoutquad);
+		tween(view.fisheye,       0.0 ,distance(1.0, 0.10), easeoutquad,
+				set(view.stereographic,true);
+				tween(view.fisheye, 1.0, distance(1.0, 0.75));
+				tween(view.fov,     130, distance(179, 0.75), easeoutquad, set(view.fovmax,150););
+				tween(view.vlookat,  90, distance(179, 0.75), easeoutquad);
+			 );
+</action>
+<action name="view_architectural">
+	tween(view.fovmax,       155.0, distance(179, 0.25), easeoutquad);
+	tween(view.architectural,  1.0, distance(1.0, 0.25), easeoutquad);
+	tween(view.fisheye,        0.0, distance(1.0, 0.25), easeoutquad, set(view.stereographic,false));
+</action>
+<action name="view_stereographic">
+	tween(view.architectural, 0.0, 0.25);
+	set(backtonormalfirst,false);
+	if(view.pannini == true, set(backtonormalfirst,true) );
+	if(view.stereographic == false, set(backtonormalfirst,true) );
+	if(backtonormalfirst, tween(view.fisheye, 0.0 ,distance(1.0, 0.25), easeoutquad, WAIT); );
+	set(view.pannini, false);
+	set(view.stereographic, true);
+	set(view.fovmax, 150);
+	tween(view.fisheye, 1.0, distance(1.0, 0.75), easeoutquad);
+</action>
+
+<network downloadqueues="4" decodequeues="2" />
+<memory maxmem="500" />
+<view
+	fov="130"
+	fovmin="60"
+	fovmax="140"
+/>
+<control usercontrol="all"  mousetype="moveto" zoomtocursor="false" zoomoutcursor="false" mouseaccelerate="1.0"
+        mousespeed="10.0" mousefriction  ="0.8" mouseyfriction = "1.0" headswing="0.00" keybaccelerate="0.5" keybspeed="10.00"
+        keybfriction="0.90" keybinvert="false" mousefovchange="1.00" keybfovchange="0.75" fovspeed="1.60" fovfriction="0.90"
+        movetocursor="arrow" cursorsize="10.0" keycodesleft="37" keycodesright="39" keycodesup="38" keycodesdown="40"
+        keycodesin="16,65,107" keycodesout="17,89,90,109"
+/>
+<display fps="120"
+		details="16"
+		tessmode="-1"
+		movequality="HIGH"
+		stillquality="HIGH"
+		movequality10="HIGH"
+		stillquality10="HIGH"
+		stilltime="0.0"
+/>
+<autorotate enabled ="true"
+	        waittime="10.0"
+	        accel   ="1"
+	        speed   ="10"
+	        horizon ="0"
+	        tofov   ="100"
+/>
+
+<textstyle name="MouseHoverStyle" css="font-family:Lato; padding:5px; 10px" fontsize="14" border="false" background="true"
+			   backgroundcolor="0x000000" textcolor="0xFFFFFF"  alpha="0.8"
+			   effect="glow(0x000000,0.7,4,2);dropshadow(2,45,0x000000,3,1);" />
+
+<textstyle name="MenuHoverStyle" css="font-family:Lato;" fontsize="10" border="false" background="false" textcolor="0xFFFFFF" effect="glow(0x000000,0.7,4,2);dropshadow(2,45,0x000000,3,1);" />
+
+<textstyle name="infostyle" css="font-family:Lato;"
+           origin="top" edge="center" textalign="center" background="false" border="false"
+           fontsize="30" textcolor="0xFFFFFF" bold="false" effect="glow(0xFFFFFF,0.7,4,2);glow(0x000000,1,4,2);dropshadow(3,45,0x000000,2,0.6);"
+           showtime="0.3" fadetime="0.3"
+           />
+
+<textstyle name="day_night_text" css="font-family:Lato;"
+           origin="bottom" edge="center" yoffset="85" xoffset="5"  textalign="center" background="false" border="false"
+           fontsize="20" textcolor="0xFFFFFF" bold="false" effect="glow(0xFFFFFF,0.7,4,2);glow(0x000000,1,4,2);dropshadow(3,45,0x000000,2,0.6);"
+           showtime="5.5" fadetime="1.5"
+           />
+<textstyle name="MiddleLargeText" css="font-family:Lato;"
+           origin="center" edge="center" yoffset="-50" textalign="center" background="false" border="false"
+           fontsize="45" textcolor="0xFFFFFF" bold="false" effect="glow(0xFFFFFF,0.7,4,2);glow(0x000000,1,8,1.5);dropshadow(3,45,0x000000,2,0.6);"
+           showtime="2.5" fadeintime="2" fadetime="1.5"
+           />
+
+<textstyle name="infostyle3" css="font-family:Lato;"
+           origin="center" edge="center" yoffset="-165" xoffset="20" textalign="center" background="false" border="false"
+           fontsize="45" textcolor="0xFFFFFF" bold="false" effect="glow(0xFFFFFF,0.7,4,2);glow(0x000000,1,8,1.5);dropshadow(3,45,0x000000,2,0.6);"
+           showtime="2.5" fadeintime="2" fadetime="1.5"
+           />
+
+<textstyle name="hoverstyle" origin="center" yoffset="190" textalign="center" background="false" border="false"
+			 fontsize="30"
+			 textcolor="0xFFFFFF" bold="false" effect="glow(0xFFFFFF,0.7,4,2);glow(0x000000,1,4,2);dropshadow(3,45,0x000000,2,0.6);"
+			 showtime="0.1" fadetime="0.2" fadeintime="0.2" css="font-family:Lato;"
+			/>
+</krpano>

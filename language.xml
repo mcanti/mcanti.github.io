@@ -1,0 +1,307 @@
+<krpano version="1.19" >
+<plugin
+		name="ro"
+		keep="true"
+		title="NTT DATA Romania Sibiu"
+
+		ClientLogoHover="Click to find out more"
+		CompanyLogoHover="Click to find out more"
+		scene_pano0="Management Zone"
+		scene_pano1="Segregated Office"
+		scene_pano2="Open space"
+		scene_pano3="Open space (ETEC Team)"
+		scene_pano4="Open space (ETEC Team)"
+		scene_pano5="Embedded Laboratory"
+		scene_pano6="Conference Room Electron"
+		scene_pano7="Print &amp; Copy Area"
+		scene_pano8="Open space"
+		scene_pano9="Segregated Office"
+		scene_pano10="Main entrance"
+		scene_pano11="Concierge"
+		scene_pano12="Conference Room Vision"
+		scene_pano13="Office NTT DATA"
+		scene_pano14="Security Operation Center"
+
+		select_menu_open="Deschide meniul"
+		select_menu_close="Inchide meniul"
+
+		floor1="Parter"
+		floor2="Etaj 1"
+
+		SoundOn="Sunet Pornit"
+		SoundOff="Sunet Oprit"
+		AutoRotateOn="Autorotate Pornit"
+		AutoRotateOff="Autorotate Oprit"
+		TurnLeft="Rotiti Stanga"
+		TurnRight="Rotiti Dreapta"
+		TurnUp="Rotiti Sus"
+		TurnDown="Rotiti Jos"
+		MovePrevious="Anterior"
+		MoveNext="Urmator"
+		ToggleThumbnails="Afiseaza/Ascunde Pictograme"
+		ZoomIn="Mareste"
+		ZoomOut="Micsoreaza"
+		ToggleFullscreen="Fullscreen"
+		HideAll="Ascunde tot"
+		ShowAll="Afiseaza tot"
+		ToggleHelp="Afiseaza/Ascunde Help"
+		ToggleMap="Afiseaza/Ascunde Harta"
+		Gyroscope="Porneste/Opreste Giroscop"
+		SliderLeft="Zi"
+		SliderRight="Noapte"
+		SliderInfo="Trageti cu mouse-ul de slider"
+    	InfoHotspot="Zona interactiva"
+    	ToggleSound="Opreste/Porneste Sunet"
+		LanguageEN="Engleza"
+		LanguageRO="Romana"
+		LanguageFR="Franceza"
+		LanguageDE="Germana"
+/>
+<plugin
+		name="en"
+		keep="true"
+		title="NTT DATA Romania Sibiu"
+
+		ClientLogoHover="Click to find out more"
+		CompanyLogoHover="Click to find out more"
+		scene_pano0="Management Zone"
+		scene_pano1="Segregated Office"
+		scene_pano2="Open space"
+		scene_pano3="Open space (ETEC Team)"
+		scene_pano4="Open space (ETEC Team)"
+		scene_pano5="Embedded Laboratory"
+		scene_pano6="Conference Room Electron"
+		scene_pano7="Print &amp; Copy Area"
+		scene_pano8="Open space"
+		scene_pano9="Segregated Office"
+		scene_pano10="Main entrance"
+		scene_pano11="Concierge"
+		scene_pano12="Conference Room Vision"
+		scene_pano13="Office NTT DATA"
+		scene_pano14="Security Operation Center"
+
+
+		select_menu_open="Open menu"
+		select_menu_close="Close menu"
+
+		floor1="Ground Floor"
+		floor2="First Floor"
+
+		SoundOn="Sound On"
+		SoundOff="Sound Off"
+		AutoRotateOn="Autorotate On"
+		AutoRotateOff="Autorotate Off"
+		TurnLeft="Turn Left"
+		TurnRight="Turn Right"
+		TurnUp="Turn Up"
+		TurnDown="Turn Down"
+		MovePrevious="Previous"
+		MoveNext="Next"
+		ToggleThumbnails="Toggle Thumbnails"
+		ZoomIn="Zoom In"
+		ZoomOut="Zoom Out"
+		ToggleFullscreen="Fullscreen"
+		HideAll="Hide All"
+		ShowAll="Show All"
+		ToggleHelp="Toggle Help"
+		ToggleMap="Toggle Map"
+		Gyroscope="Toggle Gyroscope"
+		SliderLeft="Day"
+		SliderRight="Night"
+		SliderInfo="Pull the slider"
+    InfoHotspot="Interactive Area"
+		ToggleSound="Start/Stop Sound"
+		LanguageEN="English"
+		LanguageRO="Romanian"
+		LanguageFR="French"
+		LanguageDE="German"
+/>
+
+<!-- <plugin
+		name="de"
+		keep="true"
+		title="Eden College"
+
+		ClientLogoHover=""
+		CompanyLogoHover=""
+		scene_pano0="Rezeption"
+		scene_pano1="Admission center"
+		scene_pano2="Student lounge"
+		scene_pano3="Kantine"
+		scene_pano4="Klassenzimmer"
+		scene_pano5="Bibliothek"
+		scene_pano6="Eden College Dach"
+
+		SoundOn="Lautstaerke an"
+		SoundOff="Lautstaerke aus"
+		AutoRotateOn="Automatische Drehung an"
+		AutoRotateOff="Automatische Drehung aus"
+		TurnLeft="Nach Links Drehen"
+		TurnRight="Nach Rechts Drehen"
+		TurnUp="Nach Oben"
+		TurnDown="Nach Unten"
+		MovePrevious="Vorige"
+		MoveNext="Nächste"
+		ToggleThumbnails="Starten/Beenden Miniaturansichten"
+		ZoomIn="Zoomen In"
+		ZoomOut="Zoomen Out"
+		ToggleFullscreen="Vollbild"
+		HideAll="Alle verstecken"
+		ShowAll="Alle zeigen"
+		ToggleHelp="Starten/Beenden Helfen"
+		ToggleMap="Starten/Beenden Karte"
+		Gyroscope="Starten/Beenden Gyroskop"
+		SliderLeft="Tag"
+		SliderRight="Nacht"
+		SliderInfo="Ziehen Sie den slider"
+		LanguageEN="Englisch"
+		LanguageRO="Rumänisch"
+		LanguageFR="Französisch"
+		LanguageDE="Deutsch"
+/>
+<plugin
+		name="fr"
+		keep="true"
+		title="Eden College"
+
+		ClientLogoHover=""
+		CompanyLogoHover=""
+		scene_pano0="Réception"
+		scene_pano1="Centre d'admission"
+		scene_pano2="Salon Étudiant"
+		scene_pano3="Cantine"
+		scene_pano4="Salle de classe"
+		scene_pano5="Bibliothéque"
+		scene_pano6="Eden College Roof"
+
+		SoundOn="Son Activé"
+		SoundOff="Son Désactivé"
+		AutoRotateOn="Lancer le panoramique"
+		AutoRotateOff="Arrêter le panoramique"
+		TurnLeft="Rotation à gauche"
+		TurnRight="Rotation à droite"
+		TurnUp="Haut"
+		TurnDown="Bas"
+		MovePrevious="Précédent"
+		MoveNext="Suivant"
+		ToggleThumbnails="Toggle Thumbnails"
+		ZoomIn="Zoom In"
+		ZoomOut="Zoom Out"
+		ToggleFullscreen="Plein Écran"
+		HideAll="Fermer le menu"
+		ShowAll="Lancer le menu"
+		ToggleHelp="Toggle Aide"
+		ToggleMap="Toggle Carte"
+		Gyroscope="Gyroscope"
+		SliderLeft="Jour"
+		SliderRight="Nuit"
+		SliderInfo="Tirez le curseur"
+		LanguageEN="Anglais"
+		LanguageRO="Roumain"
+		LanguageFR="Français"
+		LanguageDE="Allemand"
+	/> -->
+	<plugin
+		name="TourDefaultLanguage" keep="true" type="container" GetDefaultLang="en" count="5" padding="45" width="1" height="1" align="rightbottom" visible="false"
+		>
+		<plugin
+				name="flag_1" url="%FIRSTXML%/assets/lang/flags-europe.png" crop="3|630|133|136" align="rightbottom" width="133" height="136" x="5" y="10" x_dest="50" scale="0.3" alpha="1.0" visible="false" enabled="true" keep="true" zorder="500" lang="ro" active="false"
+				onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].LanguageRO), MouseHoverStyle);"
+				onclick="OpenLanguages();"
+				onloaded="set(y,get(skin_settings.thumb_language_top_padding));set(x,get(skin_settings.thumb_language_right_padding));"
+				>
+		</plugin>
+		<plugin
+				name="flag_2" url="%FIRSTXML%/assets/lang/flags-europe.png" crop="3|314|133|136" align="rightbottom" width="133" height="136" x="5" y="10" x_dest="50" scale="0.3" alpha="1.0" visible="false" enabled="true" keep="true" zorder="500" lang="en" active="false"
+				onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].LanguageEN), MouseHoverStyle);"
+				onclick="OpenLanguages();"
+	            onloaded="set(y,get(skin_settings.thumb_language_top_padding));set(x,get(skin_settings.thumb_language_right_padding));"
+				>
+		</plugin>
+		<!--plugin
+				name="flag_3" url="%FIRSTXML%/assets/lang/flags-europe.png" crop="661|0|133|136" align="righttop" width="133" height="136" x="10" y="10" x_dest="100" scale="0.3" alpha="1.0" visible="true" enabled="true" keep="true" zorder="5000" lang="de" active="false"
+				onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].LanguageDE), MouseHoverStyle);"
+				onclick="OpenLanguages();"
+				onloaded="set(y,get(skin_settings.thumb_language_top_padding));set(x,get(skin_settings.thumb_language_right_padding));"
+				>
+		</plugin>
+		<plugin
+				name="flag_4" url="%FIRSTXML%/assets/lang/flags-europe.png" crop="661|157|133|136" align="righttop" width="133" height="136" x="10" y="10" x_dest="150" scale="0.3" alpha="1.0" visible="true" enabled="true" keep="true" zorder="5000" lang="fr" active="false"
+				onhover="showtext(get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].LanguageFR), MouseHoverStyle);"
+				onclick="OpenLanguages();"
+				onloaded="set(y,get(skin_settings.thumb_language_top_padding));set(x,get(skin_settings.thumb_language_right_padding));"
+				>
+		</plugin-->
+	</plugin>
+
+	<action name="ActivateLanguage">
+	    if(lang=="ro",
+	        set(plugin[flag_1].active,true);
+					set(plugin[flag_1].visible,true);
+	        set(plugin[flag_1].zorder,500);
+	    );
+	    if(lang=="en",
+	        set(plugin[flag_2].active,true);
+					set(plugin[flag_2].visible,true);
+	        set(plugin[flag_2].zorder,500);
+	    );
+	    if(lang=="de",
+	        set(plugin[flag_3].active,true);
+					set(plugin[flag_3].visible,true);
+	        set(plugin[flag_3].zorder,500);
+	    );
+	    if(lang=="fr",
+	        set(plugin[flag_4].active,true);
+					set(plugin[flag_4].visible,true);
+	        set(plugin[flag_4].zorder,500);
+	    );
+	</action>
+
+	<action name="TweenFlags">
+	  if(%2,tween(plugin[%1].alpha,1,0.1,easeOutQuint);,tween(plugin[%1].alpha,0,0.1,easeOutQuint););
+		tween(plugin[%1].x,get(flagx),0.5,easeOutQuint,set(plugin[%1].visible,%2));
+	</action>
+	<action name="OpenLanguages">
+		set(flagx,get(skin_settings.thumb_language_right_padding));
+		set(flag_zorder,500);
+		for(set(j,1), j LT plugin[TourDefaultLanguage].count, inc(j),
+			txtadd(thumbflag,'flag_',get(j));
+			set(plugin[get(thumbflag)].visible,true);
+			set(plugin[get(thumbflag)].enabled,true);
+			if( plugin[get(thumbflag)].active
+				,set(plugin[get(thumbflag)].active,false);
+				,add(flagx,get(plugin[TourDefaultLanguage].padding));sub(flag_zorder,1);set(plugin[get(thumbflag)].zorder,get(flag_zorder));TweenFlags(get(thumbflag),true);
+			);
+			set(plugin[get(thumbflag)].onclick,CloseLanguages(get(name)));
+		);
+	</action>
+	<action name="CloseLanguages">
+		set(plugin[%1].active,true);
+		set(plugin[%1].zorder,500);
+		set(flagx,get(skin_settings.thumb_language_right_padding));
+		set(flag_zorder,2000);
+		for(set(j,1), j LT plugin[TourDefaultLanguage].count, inc(j),
+			txtadd(thumbflag,'flag_',get(j));
+			set(plugin[get(thumbflag)].visible,true);
+			set(plugin[get(thumbflag)].enabled,true);
+			TweenFlags(get(thumbflag),false);
+			if( plugin[get(thumbflag)].active
+				,set(plugin[TourDefaultLanguage].GetDefaultLang,get(plugin[get(thumbflag)].lang));
+				txtadd(lang_var,'lang=',get(lang));
+	            TweenFlags(get(thumbflag),true);
+				if(skin_settings.activate_title == true,
+					subtxt(get_scene_id,xml.scene,10,3);
+					titke(get(get_scene_id));,
+					copy(layer[skin_title].html, scene[get(xml.scene)].title );
+				);
+				,sub(flag_zorder,1);set(plugin[get(thumbflag)].zorder,get(flag_zorder));
+			);
+
+			set(plugin[get(thumbflag)].onclick,OpenLanguages());
+		);
+		events.dispatch(UpdateLanguageElements);
+	</action>
+	<action name="titke" >
+		txtadd(layer[skin_title].html, get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].title) , ' - ', get(plugin[get(plugin[TourDefaultLanguage].GetDefaultLang);].scene_pano%1) );
+	</action>
+</krpano>
